@@ -1,0 +1,47 @@
+<script>
+import { RouterLink } from 'vue-router';
+
+export default {
+	components: {
+		RouterLink,
+	},
+	props: {
+		to: {
+			type: String,
+			default: '/',
+			required: true,
+		},
+		tooltip: {
+			type: String,
+			default: '',
+			required: false,
+		},
+	},
+};
+</script>
+
+<template>
+	<RouterLink :to="to">
+		<li
+			class="flex items-center justify-center relative py-4 hover:bg-zinc-700 group"
+		>
+			<div
+				class="icon group-hover:opacity-100 text-white fill-white opacity-70 w-8 h-8 flex items-center justify-center"
+			>
+				<slot></slot>
+			</div>
+			<span
+				v-if="tooltip"
+				class="group-hover:opacity-100 group-hover:visible w-max absolute top-1/2 -translate-y-1/2 left-full ml-4 rounded-lg p-2 bg-white text-black font-semibold pointer-events-none opacity-0 invisible"
+				>{{ tooltip }}</span
+			>
+		</li>
+	</RouterLink>
+</template>
+
+<style>
+.icon > svg {
+	width: 100%;
+	height: 100%;
+}
+</style>
