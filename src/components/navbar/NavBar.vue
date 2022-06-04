@@ -10,7 +10,7 @@ export default {
 
 <template>
 	<header
-		class="col-start-3 col-end-13 row-span-1 flex items-center justify-between bg- m-2 ml-0"
+		class="col-start-3 col-end-13 row-span-1 flex items-center justify-between mt-6 ml-0"
 	>
 		<nav class="">
 			<ul class="flex flex-row">
