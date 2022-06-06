@@ -1,11 +1,11 @@
 <script>
-import CarStatsItem from '../components/CarStatsItem.vue';
+import CarMainStatsItem from '../components/CarMainStatsItem.vue';
 import IconEngine from '../components/icons/IconEngine.vue';
 import IconHP from '../components/icons/IconHP.vue';
 import IconSpeed from '../components/icons/IconSpeed.vue';
 import CarSwiper from '../components/CarSwiper.vue';
 export default {
-	components: { CarStatsItem, IconEngine, IconHP, IconSpeed, CarSwiper },
+	components: { CarMainStatsItem, IconEngine, IconHP, IconSpeed, CarSwiper },
 };
 </script>
 
@@ -15,7 +15,7 @@ export default {
 	>
 		<Teleport to="body">
 			<div
-				class="absolute inset-0 -z-20 bg-cover bg-no-repeat bg-center bg-fixed bg-gradient-to-b from-black xl:opacity-40 xl:blur-[1.25px] xl:grayscale-[60%] car__bg xl:after:hidden"
+				class="absolute inset-0 bg-black -z-20 before:absolute before:inset-0 before:bg-cover before:bg-no-repeat before:bg-center before:bg-fixed before:xl:opacity-40 before:xl:blur-[1.25px] before:xl:grayscale-[60%] car__bg xl:after:hidden"
 			></div>
 		</Teleport>
 		<div>
@@ -33,13 +33,15 @@ export default {
 			</div>
 		</div>
 		<ul class="flex gap-16">
-			<CarStatsItem parameter="Silnik" value="V10"><IconEngine /></CarStatsItem>
-			<CarStatsItem parameter="KM" title="Konie mechaniczne" value="602"
+			<CarMainStatsItem parameter="Silnik" value="V10"
+				><IconEngine
+			/></CarMainStatsItem>
+			<CarMainStatsItem parameter="KM" title="Konie mechaniczne" value="602"
 				><IconHP
-			/></CarStatsItem>
-			<CarStatsItem parameter="Prędkość" value="330"
+			/></CarMainStatsItem>
+			<CarMainStatsItem parameter="Prędkość" value="330"
 				><IconSpeed
-			/></CarStatsItem>
+			/></CarMainStatsItem>
 		</ul>
 		<span class="text-zinc-400 font-medium my-6"
 			>już od <span class="text-red-500 font-bold">1800 zł</span> za dobę!</span
@@ -70,7 +72,7 @@ export default {
 	}
 }
 
-.car__bg {
+.car__bg::before {
 	background-image: url('../assets/r8_highres.jpg');
 }
 

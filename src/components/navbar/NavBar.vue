@@ -27,6 +27,7 @@ export default {
 		</nav>
 		<div
 			class="hidden lg:flex flex-row items-center gap-4 fill-white text-zinc-400 font-semibold"
+			:class="{ 'lg:hidden': $route.fullPath !== '/' }"
 		>
 			<span class="flex items-center gap-2"
 				><IconEMail class="w-6 h-6" />car@rent.pl</span
