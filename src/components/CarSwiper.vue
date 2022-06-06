@@ -4,19 +4,9 @@ import IconArrowLeft from './icons/IconArrowLeft.vue';
 export default {
 	components: { IconArrowRight, IconArrowLeft },
 	props: {
-		parameter: {
+		type: {
 			type: String,
-			default: '',
-			required: true,
-		},
-		title: {
-			type: String,
-			default: '',
-			required: false,
-		},
-		value: {
-			type: String,
-			default: '',
+			default: 'pc',
 			required: true,
 		},
 	},
@@ -25,6 +15,7 @@ export default {
 <template>
 	<!-- shadow-xl shadow-black -->
 	<div
+		v-if="type === 'pc'"
 		class="hidden xl:flex flex-col w-full h-full col-start-7 col-end-11 row-start-3 row-end-[12]"
 	>
 		<div
@@ -32,16 +23,31 @@ export default {
 		></div>
 		<div class="flex justify-between mt-4">
 			<button
-				class="bg-zinc-700/75 hover:bg-zinc-800 fill-white rounded-full transition-colors"
+				class="bg-zinc-800/75 hover:bg-zinc-700 fill-white rounded-full transition-colors"
 			>
 				<IconArrowLeft class="w-12 h-12 m-2" />
 			</button>
 			<button
-				class="bg-zinc-700/75 hover:bg-zinc-800 fill-white rounded-full transition-colors"
+				class="bg-zinc-800/75 hover:bg-zinc-700 fill-white rounded-full transition-colors"
 			>
 				<IconArrowRight class="w-12 h-12 m-2" />
 			</button>
 		</div>
+	</div>
+	<div
+		v-else-if="type === 'mobile'"
+		class="flex xl:hidden my-4 justify-between"
+	>
+		<button
+			class="bg-zinc-800/75 hover:bg-zinc-700 fill-white rounded-full transition-colors"
+		>
+			<IconArrowLeft class="w-12 h-12 m-2" />
+		</button>
+		<button
+			class="bg-zinc-800/75 hover:bg-zinc-700 fill-white rounded-full transition-colors"
+		>
+			<IconArrowRight class="w-12 h-12 m-2" />
+		</button>
 	</div>
 </template>
 

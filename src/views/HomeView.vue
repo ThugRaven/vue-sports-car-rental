@@ -19,10 +19,17 @@ export default {
 			></div>
 		</Teleport>
 		<div>
-			<span class="text-5xl ml-4 leading-tight">Wynajmij emocje</span>
-			<div class="flex flex-row flex-wrap gap-4 leading-none">
-				<span class="text-[10.5rem] font-bold">Audi</span>
-				<span class="text-[10.5rem] font-display stroked">R8</span>
+			<span class="text-3xl lg:text-5xl ml-4 lg:leading-tight"
+				>Wynajmij emocje</span
+			>
+			<div class="flex flex-row flex-wrap gap-4">
+				<span class="text-9xl lg:text-[10.5rem] lg:leading-none font-bold"
+					>Audi</span
+				>
+				<span
+					class="text-9xl lg:text-[10.5rem] lg:leading-none font-display stroked"
+					>R8</span
+				>
 			</div>
 		</div>
 		<ul class="flex gap-16">
@@ -37,20 +44,29 @@ export default {
 		<span class="text-zinc-400 font-medium my-6"
 			>już od <span class="text-red-500 font-bold">1800 zł</span> za dobę!</span
 		>
-		<button
-			class="bg-zinc-800/75 hover:bg-zinc-900/75 py-4 px-12 rounded-full font-semibold tracking-wide transition-colors"
-		>
-			Zarezerwuj
-		</button>
+		<div class="flex flex-col">
+			<button
+				class="bg-zinc-800/75 hover:bg-zinc-700/75 py-4 px-12 rounded-full font-semibold tracking-wide transition-colors"
+			>
+				Zarezerwuj
+			</button>
+			<CarSwiper type="mobile" />
+		</div>
 	</main>
-	<CarSwiper />
+	<CarSwiper type="pc" />
 </template>
 
 <style scoped>
 @supports (-webkit-text-stroke: 4px white) {
 	.stroked {
 		color: transparent;
-		-webkit-text-stroke: 4px white;
+		-webkit-text-stroke: 2px white;
+	}
+
+	@media (min-width: 1024px) {
+		.stroked {
+			-webkit-text-stroke: 4px white;
+		}
 	}
 }
 
