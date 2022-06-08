@@ -23,13 +23,15 @@ export default {
 <template>
 	<li class="flex flex-col">
 		<div
-			class="icon fill-zinc-400 w-10 h-10 flex items-center justify-center mb-2"
+			class="icon fill-zinc-400 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center mb-2"
 			:title="title ? title : parameter"
 		>
 			<slot></slot>
 		</div>
-		<span class="text-zinc-400 font-medium text-lg">{{ parameter }}</span>
-		<span class="text-white font-bold text-5xl">{{ value }}</span>
+		<span class="text-zinc-400 font-medium text-sm sm:text-lg">{{
+			parameter
+		}}</span>
+		<span class="text-white font-bold text-3xl sm:text-5xl">{{ value }}</span>
 	</li>
 </template>
 

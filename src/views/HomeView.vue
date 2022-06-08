@@ -11,23 +11,26 @@ export default {
 
 <template>
 	<main
-		class="col-start-3 col-end-13 row-start-3 lg:row-start-5 row-end-[13] flex flex-col justify-start items-start pl-0 p-4 text-white"
+		class="col-start-2 lg:col-start-3 col-end-13 row-start-3 lg:row-start-5 row-end-[13] flex flex-col justify-start items-center sm:items-start lg:pl-0 p-8 lg:p-4 text-white"
 	>
 		<Teleport to="body">
 			<div
 				class="absolute inset-0 bg-black -z-20 before:absolute before:inset-0 before:bg-cover before:bg-no-repeat before:bg-center before:bg-fixed before:xl:opacity-40 before:xl:blur-[1.25px] before:xl:grayscale-[60%] car__bg xl:after:hidden"
 			></div>
 		</Teleport>
-		<div>
-			<span class="text-3xl lg:text-5xl ml-4 lg:leading-tight"
+		<div class="flex flex-col items-center sm:items-start">
+			<span class="text-3xl lg:text-5xl ml-4 lg:leading-tight text-center"
 				>Wynajmij emocje</span
 			>
-			<div class="flex flex-row flex-wrap gap-4">
-				<span class="text-9xl lg:text-[10.5rem] lg:leading-none font-bold"
+			<div
+				class="flex flex-row flex-wrap gap-4 justify-center sm:justify-start"
+			>
+				<span
+					class="text-8xl sm:text-9xl lg:text-[10.5rem] lg:leading-none font-bold"
 					>Audi</span
 				>
 				<span
-					class="text-9xl lg:text-[10.5rem] lg:leading-none font-display stroked"
+					class="text-8xl sm:text-9xl lg:text-[10.5rem] lg:leading-none font-display stroked"
 					>R8</span
 				>
 			</div>
