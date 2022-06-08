@@ -47,7 +47,7 @@ export default {
 			/>
 		</div>
 		<div>
-			<ul class="grid grid-cols-3 md:grid-cols-5 gap-4 my-4">
+			<ul class="grid grid-cols-3 md:grid-cols-5 gap-4 my-8">
 				<CarStatItem parameter="Silnik" value="5.2 V10 | 602KM | 560Nm"
 					><IconEngine
 				/></CarStatItem>
@@ -78,7 +78,7 @@ export default {
 					><IconWeight
 				/></CarStatItem>
 			</ul>
-			<h2 class="text-2xl font-bold text-center mt-12">Cennik</h2>
+			<h2 class="text-2xl font-bold text-center">Cennik</h2>
 			<div class="overflow-x-auto">
 				<table
 					class="table-layout mx-auto my-2 text-sm xl:text-lg w-full max-w-screen-lg"
