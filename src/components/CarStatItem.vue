@@ -9,13 +9,18 @@ export default {
 		},
 		title: {
 			type: String,
-			default: '',
+			default: null,
 			required: false,
 		},
 		value: {
 			type: String,
 			default: '',
 			required: true,
+		},
+		valueTitle: {
+			type: String,
+			default: null,
+			required: false,
 		},
 	},
 };
@@ -31,9 +36,11 @@ export default {
 		<span class="text-zinc-400 font-bold text-lg lg:text-xl text-center">{{
 			parameter
 		}}</span>
-		<span class="text-white font-medium text-sm lg:text-base text-center">{{
-			value
-		}}</span>
+		<span
+			class="text-white font-medium text-sm lg:text-base text-center"
+			:title="valueTitle"
+			>{{ value }}</span
+		>
 	</li>
 </template>
 

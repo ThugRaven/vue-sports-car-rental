@@ -1,6 +1,6 @@
 <script>
 import { RouterLink } from 'vue-router';
-import ButtonPrimary from './ButtonPrimary.vue';
+import ButtonSecondary from './ButtonSecondary.vue';
 import CarStatItem from './CarStatItem.vue';
 import IconDrive from './icons/IconDrive.vue';
 import IconEngine from './icons/IconEngine.vue';
@@ -15,8 +15,8 @@ export default {
 		IconSpeed,
 		IconTransmission,
 		IconDrive,
-		ButtonPrimary,
 		RouterLink,
+		ButtonSecondary,
 	},
 	props: {
 		car: {
@@ -29,7 +29,7 @@ export default {
 </script>
 <template>
 	<li
-		class="flex flex-col lg:flex-row bg-zinc-800 max-w-screen-sm lg:max-w-screen-2xl mx-auto item relative before:absolute before:inset-0 before:w-full before:h-full before:transition-transform before:-z-[1] before:hover:-translate-x-2 before:hover:translate-y-2 before:bg-red-500"
+		class="flex flex-col lg:flex-row bg-zinc-800 max-w-screen-sm lg:max-w-screen-2xl item relative before:absolute before:inset-0 before:w-full before:h-full before:transition-transform before:-z-[1] before:hover:-translate-x-2 before:hover:translate-y-2 before:bg-red-500"
 	>
 		<img
 			src="../assets/r8_thumb.jpg"
@@ -37,7 +37,7 @@ export default {
 			class="lg:w-80 h-80 xl:w-96 xl:h-96 lg:aspect-square object-cover"
 		/>
 		<div class="flex flex-col justify-evenly p-4 pl-8 w-full gap-4">
-			<RouterLink to="/" class="text-center lg:text-left">
+			<RouterLink to="/cars/1" class="text-center lg:text-left">
 				<span
 					class="text-4xl font-semibold tracking-widest hover:text-red-500 transition-colors"
 					>Audi R8</span
@@ -59,7 +59,7 @@ export default {
 				<CarStatItem parameter="Napęd" value="AWD"><IconDrive /></CarStatItem>
 			</ul>
 			<div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-				<ButtonPrimary>Zarezerwuj</ButtonPrimary>
+				<ButtonSecondary to="/cars/1">Zarezerwuj</ButtonSecondary>
 				<span class="text-zinc-400 font-medium"
 					>już od <span class="text-red-500 font-bold">1800 zł</span> za
 					dobę!</span
