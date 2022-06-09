@@ -1,7 +1,27 @@
-<script setup>
+<script>
+import { onAuthStateChanged } from '@firebase/auth';
 import { RouterView } from 'vue-router';
-import SideBar from './components/sidebar/SideBar.vue';
 import NavBar from './components/navbar/NavBar.vue';
+import SideBar from './components/sidebar/SideBar.vue';
+import { auth } from './firebase';
+import { store } from './store';
+
+export default {
+	components: {
+		RouterView,
+		SideBar,
+		NavBar,
+	},
+	beforeMount() {
+		onAuthStateChanged(auth, (user) => {
+			if (user) {
+				store.user = user;
+			} else {
+				store.user = null;
+			}
+		});
+	},
+};
 </script>
 
 <template>

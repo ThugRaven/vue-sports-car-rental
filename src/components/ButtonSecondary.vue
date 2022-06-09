@@ -27,10 +27,3 @@ export default {
 		</button>
 	</RouterLink>
 </template>
-
-<style>
-.icon > svg {
-	width: 100%;
-	height: 100%;
-}
-</style>

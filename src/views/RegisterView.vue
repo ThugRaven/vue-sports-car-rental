@@ -1,8 +1,24 @@
 <script>
+import { createUserWithEmailAndPassword } from '@firebase/auth';
 import { RouterLink } from 'vue-router';
 import ButtonPrimary from '../components/ButtonPrimary.vue';
+import { auth } from '../firebase.js';
 export default {
 	components: { RouterLink, ButtonPrimary },
+	data() {
+		return { email: '', password: '' };
+	},
+	methods: {
+		createAccount() {
+			createUserWithEmailAndPassword(auth, this.email, this.password)
+				.then(() => {
+					this.$router.push('/');
+				})
+				.catch((error) => {
+					alert(error);
+				});
+		},
+	},
 };
 </script>
 
@@ -14,26 +30,28 @@ export default {
 			<h1 class="my-6 text-4xl font-semibold text-center md:text-left">
 				Zarejestruj się
 			</h1>
-			<label for="login">Login</label>
+			<label for="email">Email</label>
 			<input
-				id="login"
+				id="email"
+				v-model="email"
 				type="text"
-				name="login"
+				name="email"
 				class="mt-1 mb-2 px-4 py-2 rounded-md bg-zinc-800 outline-none border border-zinc-600 focus:border-red-500 focus:ring focus:ring-red-500/50 text-lg"
 			/>
 			<label for="password">Hasło</label>
 			<input
 				id="password"
+				v-model="password"
 				type="password"
 				name="password"
 				class="mt-1 mb-2 px-4 py-2 rounded-md bg-zinc-800 outline-none border border-zinc-600 focus:border-red-500 focus:ring focus:ring-red-500/50 text-lg"
 			/>
-			<ButtonPrimary to="/" class="my-2" width="full"
+			<ButtonPrimary class="my-2" width="full" @click="createAccount"
 				>Zarejestruj</ButtonPrimary
 			>
 			<p>
 				Posiadasz już konto?
-				<RouterLink to="/register" class="text-red-500 font-bold"
+				<RouterLink to="/login" class="text-red-500 font-bold"
 					>Zaloguj się</RouterLink
 				>
 			</p>
