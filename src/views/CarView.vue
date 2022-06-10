@@ -15,6 +15,8 @@ import IconTimer from '../components/icons/IconTimer.vue';
 import IconTransmission from '../components/icons/IconTransmission.vue';
 import IconWeight from '../components/icons/IconWeight.vue';
 import { db } from '../firebase';
+import { RouterLink } from 'vue-router';
+import { store } from '../store';
 export default {
 	components: {
 		CarStatItem,
@@ -31,6 +33,7 @@ export default {
 		ButtonPrimary,
 		ButtonSecondary,
 		CarImage,
+		RouterLink,
 	},
 	data() {
 		return {
@@ -39,7 +42,7 @@ export default {
 			rent_end: this.getTomorrowDate(),
 		};
 	},
-	mounted() {
+	created() {
 		this.getCar();
 	},
 	methods: {
@@ -64,6 +67,11 @@ export default {
 			now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
 			now.setDate(now.getDate() + 1);
 			return now.toISOString().slice(0, 16);
+		},
+		goToRentView() {
+			if (!store.user) return this.$router.push('/login');
+
+			this.$router.push(`/rent/${this.car.id_car}`);
 		},
 	},
 };
@@ -195,39 +203,11 @@ export default {
 					</tbody>
 				</table>
 			</div>
-
-			<h2 class="text-2xl font-bold text-center my-4">Rezerwacja</h2>
-			<div
-				class="flex flex-col gap-2 w-max mx-auto items-center justify-center"
-			>
-				<div
-					class="flex flex-col sm:flex-row gap-2 justify-between items-center w-full"
-				>
-					<label for="rent_start" class="text-xl">Odbiór</label>
-					<input
-						id="rent_start"
-						v-model="rent_start"
-						type="datetime-local"
-						name="rent_start"
-						class="bg-zinc-800 px-4 py-2 rounded-md"
-					/>
-				</div>
-				<div
-					class="flex flex-col sm:flex-row gap-2 justify-between items-center w-full"
-				>
-					<label for="rent_end" class="text-xl">Zwrot</label>
-					<input
-						id="rent_end"
-						v-model="rent_end"
-						type="datetime-local"
-						name="rent_end"
-						class="bg-zinc-800 px-4 py-2 rounded-md"
-					/>
-				</div>
-			</div>
 			<div class="flex flex-col sm:flex-row gap-4 mt-6">
 				<ButtonSecondary to="/cars" width="full">Wróć do listy</ButtonSecondary>
-				<ButtonPrimary width="full">Wynajmij pojazd</ButtonPrimary>
+				<ButtonPrimary width="full" @click="goToRentView"
+					>Wynajmij pojazd</ButtonPrimary
+				>
 			</div>
 		</div>
 	</main>

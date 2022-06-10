@@ -20,6 +20,11 @@ const router = createRouter({
 			component: () => import('../views/CarView.vue'),
 		},
 		{
+			path: '/rent/:id',
+			name: 'rent',
+			component: () => import('../views/RentView.vue'),
+		},
+		{
 			path: '/login',
 			name: 'login',
 			component: () => import('../views/LoginView.vue'),

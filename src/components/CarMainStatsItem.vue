@@ -35,7 +35,7 @@ export default {
 	</li>
 </template>
 
-<style>
+<style scoped>
 .icon > svg {
 	width: 100%;
 	height: 100%;
