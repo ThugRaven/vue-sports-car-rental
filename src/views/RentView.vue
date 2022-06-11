@@ -130,7 +130,7 @@ export default {
 				id_user: store.user.uid,
 				rent_start: new Date(this.rent_start),
 				rent_end: new Date(this.rent_end),
-				rent_status: 'active',
+				status: 'active',
 				distance: 0,
 				deposit: this.deposit,
 				total_price: this.total_price,
