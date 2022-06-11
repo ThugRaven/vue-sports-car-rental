@@ -1,108 +1,101 @@
 <script>
 import {
 	collection,
+	doc,
 	getDocs,
 	orderBy,
 	query,
-	where,
+	updateDoc,
 } from '@firebase/firestore';
-import { RouterLink } from 'vue-router';
-import IconUserAvatar from '../components/icons/IconUserAvatar.vue';
 import { db } from '../firebase';
 import { store } from '../store';
-
 export default {
-	components: { IconUserAvatar, RouterLink },
+	components: {},
 	data() {
 		return {
 			rents: [],
 			isLoading: true,
-			rent_start: this.getCurrentDate(),
-			rent_end: this.getTomorrowDate(),
-			store,
 		};
-	},
-	watch: {
-		'store.user'() {
-			if (!store.user) {
-				return this.$router.push('/login');
-			}
-		},
 	},
 	created() {
 		if (!store.user) {
 			return this.$router.push('/login');
 		}
-		this.getUserRents();
+		this.searchRents();
 	},
-
 	methods: {
-		async getUserRents() {
-			const q = query(
-				collection(db, 'rents'),
-				where('id_user', '==', store.user.uid),
-				orderBy('created_at'),
-			);
+		async getRents() {
+			this.rents = [];
+			this.isLoading = true;
+
+			let rents = [];
+			let q = query(collection(db, 'rents'), orderBy('created_at'));
 
 			const querySnapshot = await getDocs(q);
 			querySnapshot.forEach((doc) => {
 				let id = doc.id;
-				this.rents.push({ id, ...doc.data() });
+				rents.push({ id, ...doc.data() });
 			});
 
 			this.isLoading = false;
+			return rents;
 		},
-		getCurrentDate() {
-			let now = new Date();
-			now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-			return now.toISOString().slice(0, 16);
+		async searchRents() {
+			this.getRents().then((response) => {
+				this.rents = response;
+			});
 		},
-		getTomorrowDate() {
-			let now = new Date();
-			now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-			now.setDate(now.getDate() + 1);
-			return now.toISOString().slice(0, 16);
+		async toggleStatus(id, status) {
+			let updatedRent = this.rents.find((rent) => rent.id === id);
+			let newStatus = status === 'active' ? 'completed' : 'active';
+			updatedRent.status = newStatus;
+			await updateDoc(doc(db, 'rents', id.toString()), {
+				status: newStatus,
+			}).catch(() => {
+				updatedRent.status = status;
+			});
 		},
 	},
 };
 </script>
 
 <template>
-	<main
-		v-if="store.user"
-		class="col-start-2 lg:col-start-3 col-end-13 row-start-2 row-end-[13] flex flex-col items-center justify-center overflow-y-auto lg:pl-0 p-4 text-white bg-zinc-700"
-	>
-		<IconUserAvatar class="w-32 h-32 fill-white" />
-		<h2 class="text-2xl font-bold text-center">{{ store.user.email }}</h2>
-		<h2 class="mt-4 text-3xl font-bold text-center">
-			Moje wynajmy - {{ rents.length }}
+	<div class="flex flex-col items-center justify-center w-full h-full">
+		<h2 class="text-2xl font-bold text-center">
+			Dashboard - Wynajmy - {{ rents.length }}
 		</h2>
-		<div class="w-full">
+		<div class="w-full h-full">
 			<div v-if="rents.length > 0" class="overflow-x-auto">
 				<table
 					class="table-layout mx-auto my-2 text-sm xl:text-base w-full text-center"
 				>
 					<thead class="border-b border-b-red-500">
 						<tr>
-							<th>Pojazd</th>
+							<th>ID Wynajmu</th>
+							<th>ID Samochodu</th>
+							<th>ID Użytkownika</th>
 							<th>Początek wynajmu</th>
 							<th>Koniec wynajmu</th>
 							<th>Status</th>
-							<th>Przejechany dystans</th>
+							<th>Dystans</th>
 							<th>Kaucja</th>
-							<th>Koszt</th>
-							<th>Płatność</th>
+							<th>Kwota</th>
+							<th>Rodzaj płatności</th>
+							<th>Czas utworzenia</th>
+							<th>Zmień status</th>
 						</tr>
 					</thead>
 					<tbody class="leading-none">
 						<tr v-for="rent in rents" :key="rent.id">
+							<td>{{ rent.id }}</td>
 							<td>
 								<RouterLink
-									:to="`/rent/${rent.id_car}`"
+									:to="`/cars/${rent.id_car}`"
 									class="hover:text-red-500 transition-colors"
 									>{{ rent.id_car }}</RouterLink
 								>
 							</td>
+							<td>{{ rent.id_user }}</td>
 							<td>
 								{{ new Date(rent.rent_start.seconds * 1000).toLocaleString() }}
 							</td>
@@ -121,6 +114,17 @@ export default {
 							<td>{{ rent.deposit ? 'Tak' : 'Nie' }}</td>
 							<td>{{ `${rent.total_price}&nbsp;zł` }}</td>
 							<td>{{ rent.payment_type === 'card' ? 'Karta' : 'Gotówka' }}</td>
+							<td>
+								{{ new Date(rent.created_at.seconds * 1000).toLocaleString() }}
+							</td>
+							<td>
+								<button
+									class="hover:text-red-500 transition-colors"
+									@click="toggleStatus(rent.id, rent.status)"
+								>
+									Zmień
+								</button>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -151,26 +155,13 @@ export default {
 				</svg>
 			</div>
 			<div v-else-if="rents.length === 0" class="my-4 text-xl text-center">
-				Brak wypożyczonych pojazdów
+				Brak wynajmów
 			</div>
 		</div>
-	</main>
+	</div>
 </template>
 
 <style scoped>
-@supports (-webkit-text-stroke: 4px white) {
-	.stroked {
-		color: transparent;
-		-webkit-text-stroke: 2px white;
-	}
-
-	@media (min-width: 1024px) {
-		.stroked {
-			-webkit-text-stroke: 4px white;
-		}
-	}
-}
-
 td,
 th {
 	padding: 1rem;

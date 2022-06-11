@@ -71,7 +71,7 @@ export default {
 	<main
 		class="col-start-2 xl:col-start-3 col-end-13 row-start-2 row-end-[13] flex flex-col items-center overflow-y-auto xl:pl-0 p-4 text-white bg-zinc-700"
 	>
-		<h1 class="text-4xl lg:text-6xl font-bold text-center py-4">Samochody</h1>
+		<h1 class="text-4xl lg:text-5xl font-bold text-center py-4">Samochody</h1>
 
 		<div
 			class="flex flex-col items-center max-w-screen-sm lg:max-w-screen-2xl w-full"

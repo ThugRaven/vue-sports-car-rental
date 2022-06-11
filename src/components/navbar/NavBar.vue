@@ -1,8 +1,9 @@
 <script>
-import NavItem from './NavItem.vue';
+import { store } from '../../store.js';
 import IconEMail from '../icons/IconEMail.vue';
-import IconPhone from '../icons/IconPhone.vue';
 import IconMenu from '../icons/IconMenu.vue';
+import IconPhone from '../icons/IconPhone.vue';
+import NavItem from './NavItem.vue';
 
 export default {
 	components: {
@@ -10,6 +11,11 @@ export default {
 		IconEMail,
 		IconPhone,
 		IconMenu,
+	},
+	data() {
+		return {
+			store,
+		};
 	},
 };
 </script>
@@ -23,6 +29,11 @@ export default {
 				<NavItem to="/">Strona główna</NavItem>
 				<NavItem to="/cars">Samochody</NavItem>
 				<NavItem to="/contact">Kontakt</NavItem>
+				<NavItem
+					v-if="store.user && store.user.role === 'admin'"
+					to="/dashboard"
+					>Dashboard</NavItem
+				>
 			</ul>
 		</nav>
 		<div

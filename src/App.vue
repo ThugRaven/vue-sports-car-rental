@@ -1,9 +1,10 @@
 <script>
 import { onAuthStateChanged } from '@firebase/auth';
+import { doc, getDoc } from '@firebase/firestore';
 import { RouterView } from 'vue-router';
 import NavBar from './components/navbar/NavBar.vue';
 import SideBar from './components/sidebar/SideBar.vue';
-import { auth } from './firebase';
+import { auth, db } from './firebase';
 import { store } from './store';
 
 export default {
@@ -16,10 +17,25 @@ export default {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
 				store.user = user;
+				this.getRole(user);
 			} else {
 				store.user = null;
 			}
 		});
+	},
+	methods: {
+		async getRole(user) {
+			if (!user) return;
+
+			const docRef = doc(db, 'users', user.uid);
+			const docSnap = await getDoc(docRef);
+
+			if (docSnap.exists()) {
+				store.user = Object.assign(store.user, docSnap.data());
+			} else {
+				store.user.role = null;
+			}
+		},
 	},
 };
 </script>

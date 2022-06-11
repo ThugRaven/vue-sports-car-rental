@@ -267,7 +267,7 @@ export default {
 				</ul>
 			</div>
 			<div class="flex flex-col sm:flex-row gap-4 mt-6 w-full max-w-screen-sm">
-				<RouterLink :to="`/cars/${car.id_car}`">
+				<RouterLink :to="`/cars/${car.id_car}`" class="w-full">
 					<ButtonSecondary width="full">Wróć</ButtonSecondary>
 				</RouterLink>
 				<ButtonPrimary width="full" @click="rentCar">Zarezerwuj</ButtonPrimary>

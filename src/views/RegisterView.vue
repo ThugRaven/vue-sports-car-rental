@@ -1,8 +1,9 @@
 <script>
 import { createUserWithEmailAndPassword } from '@firebase/auth';
+import { doc, setDoc } from '@firebase/firestore';
 import { RouterLink } from 'vue-router';
 import ButtonPrimary from '../components/ButtonPrimary.vue';
-import { auth } from '../firebase.js';
+import { auth, db } from '../firebase.js';
 export default {
 	components: { RouterLink, ButtonPrimary },
 	data() {
@@ -11,12 +12,18 @@ export default {
 	methods: {
 		createAccount() {
 			createUserWithEmailAndPassword(auth, this.email, this.password)
-				.then(() => {
+				.then((response) => {
+					this.createAccountDoc(response.user.uid);
 					this.$router.push('/');
 				})
 				.catch((error) => {
 					alert(error);
 				});
+		},
+		async createAccountDoc(id) {
+			await setDoc(doc(db, 'users', id), {
+				role: 'user',
+			});
 		},
 	},
 };
