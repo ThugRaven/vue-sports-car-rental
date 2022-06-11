@@ -1,15 +1,13 @@
 <script>
 import { RouterLink } from 'vue-router';
 import ButtonSecondary from './ButtonSecondary.vue';
+import CarImage from './CarImage.vue';
 import CarStatItem from './CarStatItem.vue';
 import IconDrive from './icons/IconDrive.vue';
 import IconEngine from './icons/IconEngine.vue';
 import IconSpeed from './icons/IconSpeed.vue';
 import IconTimer from './icons/IconTimer.vue';
 import IconTransmission from './icons/IconTransmission.vue';
-import { ref, getDownloadURL } from 'firebase/storage';
-import { storage } from '../firebase.js';
-import CarImage from './CarImage.vue';
 export default {
 	components: {
 		CarStatItem,
@@ -29,27 +27,11 @@ export default {
 			required: true,
 		},
 	},
-	methods: {
-		async getCarImageUrl(model) {
-			console.log(model);
-			model = model.replace(/\s+/g, '-').toLowerCase();
-			console.log(model);
-			let modelPath = `${model}_thumb.jpg`;
-			const imageRef = ref(storage, `images/${modelPath}`);
-			console.log(imageRef);
-			let path = 'kekw';
-			getDownloadURL(imageRef).then((url) => {
-				console.log(url);
-				path = url;
-			});
-			return path;
-		},
-	},
 };
 </script>
 <template>
 	<li
-		class="flex flex-col lg:flex-row bg-zinc-800 max-w-screen-sm lg:max-w-screen-2xl w-full item relative before:absolute before:inset-0 before:w-full before:h-full before:transition-transform before:-z-[1] before:hover:-translate-x-2 before:hover:translate-y-2 before:bg-red-500"
+		class="flex flex-col lg:flex-row bg-zinc-800 w-full item relative before:absolute before:inset-0 before:w-full before:h-full before:transition-transform before:-z-[1] before:hover:-translate-x-2 before:hover:translate-y-2 before:bg-red-500"
 	>
 		<CarImage
 			:car="car"
@@ -99,7 +81,9 @@ export default {
 				/></CarStatItem>
 			</ul>
 			<div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-				<ButtonSecondary :to="`/cars/${car.id}`">Zarezerwuj</ButtonSecondary>
+				<RouterLink :to="`/cars/${car.id}`">
+					<ButtonSecondary>Zarezerwuj</ButtonSecondary>
+				</RouterLink>
 				<span class="text-zinc-400 font-medium"
 					>już od
 					<span class="text-red-500 font-bold">{{ car.price_deposit }} zł</span>

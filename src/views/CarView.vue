@@ -1,5 +1,6 @@
 <script>
 import { doc, getDoc } from '@firebase/firestore';
+import { RouterLink } from 'vue-router';
 import ButtonPrimary from '../components/ButtonPrimary.vue';
 import ButtonSecondary from '../components/ButtonSecondary.vue';
 import CarImage from '../components/CarImage.vue';
@@ -15,7 +16,6 @@ import IconTimer from '../components/icons/IconTimer.vue';
 import IconTransmission from '../components/icons/IconTransmission.vue';
 import IconWeight from '../components/icons/IconWeight.vue';
 import { db } from '../firebase';
-import { RouterLink } from 'vue-router';
 import { store } from '../store';
 export default {
 	components: {
@@ -204,7 +204,9 @@ export default {
 				</table>
 			</div>
 			<div class="flex flex-col sm:flex-row gap-4 mt-6">
-				<ButtonSecondary to="/cars" width="full">Wróć do listy</ButtonSecondary>
+				<RouterLink to="/cars" class="w-full">
+					<ButtonSecondary width="full">Wróć do listy</ButtonSecondary>
+				</RouterLink>
 				<ButtonPrimary width="full" @click="goToRentView"
 					>Wynajmij pojazd</ButtonPrimary
 				>

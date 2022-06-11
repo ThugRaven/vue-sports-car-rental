@@ -6,6 +6,7 @@ import {
 	getDoc,
 	serverTimestamp,
 } from '@firebase/firestore';
+import { RouterLink } from 'vue-router';
 import ButtonPrimary from '../components/ButtonPrimary.vue';
 import ButtonSecondary from '../components/ButtonSecondary.vue';
 import CarImage from '../components/CarImage.vue';
@@ -18,6 +19,7 @@ export default {
 		ButtonSecondary,
 		CarImage,
 		RentSummaryItem,
+		RouterLink,
 	},
 	data() {
 		return {
@@ -265,9 +267,9 @@ export default {
 				</ul>
 			</div>
 			<div class="flex flex-col sm:flex-row gap-4 mt-6 w-full max-w-screen-sm">
-				<ButtonSecondary :to="`/cars/${car.id_car}`" width="full"
-					>Wróć</ButtonSecondary
-				>
+				<RouterLink :to="`/cars/${car.id_car}`">
+					<ButtonSecondary width="full">Wróć</ButtonSecondary>
+				</RouterLink>
 				<ButtonPrimary width="full" @click="rentCar">Zarezerwuj</ButtonPrimary>
 			</div>
 		</div>
