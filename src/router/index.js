@@ -59,6 +59,11 @@ const router = createRouter({
 					name: 'dashboard users',
 					component: () => import('../views/DashboardUsersView.vue'),
 				},
+				{
+					path: 'mock',
+					name: 'dashboard mock',
+					component: () => import('../views/DashboardMockView.vue'),
+				},
 			],
 		},
 	],
