@@ -21,12 +21,17 @@ export default {
 </script>
 
 <template>
-	<RouterLink v-if="to" :to="to">
+	<RouterLink v-if="to" v-slot="{ isActive }" :to="to">
 		<li
-			class="flex items-center justify-center relative py-4 hover:bg-zinc-700 group"
+			class="flex items-center justify-center relative py-4 hover:bg-zinc-700/50 group"
+			:class="{ 'bg-zinc-700/50': isActive }"
 		>
 			<div
 				class="icon group-hover:opacity-100 text-white fill-white opacity-70 w-8 h-8 flex items-center justify-center"
+				:class="{
+					'after:absolute after:top-0 after:left-0 after:w-1.5 after:h-full after:bg-white opacity-100':
+						isActive,
+				}"
 			>
 				<slot></slot>
 			</div>

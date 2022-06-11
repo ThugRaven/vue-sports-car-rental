@@ -7,6 +7,10 @@ import { store } from '../../store.js';
 import { signOut } from '@firebase/auth';
 import { auth } from '../../firebase';
 import IconLogout from '../icons/IconLogout.vue';
+import IconDashboard from '../icons/IconDashboard.vue';
+import IconCar from '../icons/IconCar.vue';
+import IconCarRental from '../icons/IconCarRental.vue';
+import IconSave from '../icons/IconSave.vue';
 
 export default {
 	components: {
@@ -15,6 +19,10 @@ export default {
 		IconPerson,
 		IconLogin,
 		IconLogout,
+		IconDashboard,
+		IconCar,
+		IconCarRental,
+		IconSave,
 	},
 	data() {
 		return {
@@ -35,6 +43,43 @@ export default {
 	<aside class="col-span-1 row-span-full bg-zinc-800">
 		<ul class="flex flex-col h-full">
 			<SideBarLogo href="/" class="py-3" />
+			<div class="mb-auto">
+				<SideBarItem
+					v-if="store.user && store.user.role === 'admin'"
+					to="/dashboard"
+					tooltip="Dashboard"
+				>
+					<IconDashboard />
+				</SideBarItem>
+				<SideBarItem
+					v-if="store.user && store.user.role === 'admin'"
+					to="/dashboard/cars"
+					tooltip="Samochody"
+				>
+					<IconCar />
+				</SideBarItem>
+				<SideBarItem
+					v-if="store.user && store.user.role === 'admin'"
+					to="/dashboard/rents"
+					tooltip="Wynajmy"
+				>
+					<IconCarRental />
+				</SideBarItem>
+				<SideBarItem
+					v-if="store.user && store.user.role === 'admin'"
+					to="/dashboard/users"
+					tooltip="Użytkownicy"
+				>
+					<IconPerson />
+				</SideBarItem>
+				<SideBarItem
+					v-if="store.user && store.user.role === 'admin'"
+					to="/dashboard/mock"
+					tooltip="Mock Data"
+				>
+					<IconSave />
+				</SideBarItem>
+			</div>
 			<div class="mt-auto">
 				<SideBarItem
 					v-if="!store.user"
