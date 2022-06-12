@@ -70,6 +70,9 @@ export default {
 		},
 		goToRentView() {
 			if (!store.user) return this.$router.push('/login');
+			if (!this.car.rentable) {
+				return this.$router.push('/cars');
+			}
 
 			this.$router.push(`/rent/${this.car.id_car}`);
 		},

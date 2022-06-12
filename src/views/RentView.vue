@@ -126,6 +126,9 @@ export default {
 		},
 		async rentCar() {
 			if (!store.user) return this.$router.push('/login');
+			if (!this.car.rentable) {
+				return this.$router.push('/cars');
+			}
 
 			await addDoc(collection(db, 'rents'), {
 				id_car: this.car.id_car,
