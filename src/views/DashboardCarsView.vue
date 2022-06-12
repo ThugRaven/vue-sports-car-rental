@@ -54,6 +54,11 @@ export default {
 				updatedCar.rentable = rentable;
 			});
 		},
+		async saveGallery(id, gallery) {
+			await updateDoc(doc(db, 'cars', id.toString()), {
+				gallery: gallery,
+			});
+		},
 	},
 };
 </script>
@@ -77,6 +82,8 @@ export default {
 							<th>Przebieg</th>
 							<th>Wypożyczalny</th>
 							<th>Wypożyczalność</th>
+							<th>Galeria</th>
+							<th>Zapisz</th>
 						</tr>
 					</thead>
 					<tbody class="leading-none">
@@ -110,6 +117,27 @@ export default {
 									@click="toggleRentable(car.id_car, car.rentable)"
 								>
 									Zmień
+								</button>
+							</td>
+							<td
+								:class="{
+									'bg-green-600/10 text-green-300': car.gallery > 0,
+									'bg-red-600/10 text-red-300': car.gallery === 0,
+								}"
+							>
+								<input
+									v-model="car.gallery"
+									min="0"
+									type="number"
+									class="bg-zinc-700 px-4 py-2 w-24"
+								/>
+							</td>
+							<td>
+								<button
+									class="hover:text-red-500 transition-colors"
+									@click="saveGallery(car.id_car, car.gallery)"
+								>
+									Zapisz
 								</button>
 							</td>
 						</tr>

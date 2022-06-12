@@ -37,7 +37,7 @@ export default {
 			</div>
 			<span
 				v-if="tooltip"
-				class="group-hover:opacity-100 group-hover:visible w-max absolute top-1/2 -translate-y-1/2 left-full ml-4 rounded-lg p-2 bg-white text-black font-semibold pointer-events-none opacity-0 invisible"
+				class="group-hover:opacity-100 group-hover:visible z-10 w-max absolute top-1/2 -translate-y-1/2 left-full ml-4 rounded-lg p-2 bg-white text-black font-semibold pointer-events-none opacity-0 invisible"
 				>{{ tooltip }}</span
 			>
 		</li>

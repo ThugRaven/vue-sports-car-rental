@@ -9,6 +9,11 @@ export default {
 			default: () => {},
 			required: true,
 		},
+		res: {
+			type: String,
+			default: 'thumb',
+			required: false,
+		},
 	},
 	data() {
 		return {
@@ -21,7 +26,7 @@ export default {
 	methods: {
 		async getCarImageUrl(model) {
 			model = model.replace(/\s+/g, '-').toLowerCase();
-			let modelPath = `${model}_thumb.jpg`;
+			let modelPath = `${model}_${this.res}.jpg`;
 			const imageRef = ref(storage, `images/${modelPath}`);
 			getDownloadURL(imageRef)
 				.then((url) => {

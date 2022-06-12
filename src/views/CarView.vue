@@ -106,7 +106,9 @@ export default {
 					parameter="Silnik"
 					:value="`${
 						car.eng_displacement ? `${car.eng_displacement.toFixed(1)} ` : ''
-					}${car.eng_info} | ${car.eng_power}KM | ${car.eng_torque}Nm`"
+					}${car.eng_info ? car.eng_info : ''} | ${car.eng_power}KM | ${
+						car.eng_torque
+					}Nm`"
 					><IconEngine
 				/></CarStatItem>
 				<CarStatItem parameter="0-100 km/h" :value="`${car.time_100}s`"

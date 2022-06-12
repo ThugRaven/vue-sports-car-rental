@@ -1,34 +1,60 @@
 <script>
-import IconArrowRight from './icons/IconArrowRight.vue';
 import IconArrowLeft from './icons/IconArrowLeft.vue';
+import IconArrowRight from './icons/IconArrowRight.vue';
+import CarImage from './CarImage.vue';
 export default {
-	components: { IconArrowRight, IconArrowLeft },
+	components: { IconArrowRight, IconArrowLeft, CarImage },
 	props: {
 		type: {
 			type: String,
 			default: 'pc',
 			required: true,
 		},
+		cars: {
+			type: Object,
+			default: () => {},
+			required: false,
+		},
 	},
+	emits: ['previous', 'next'],
 };
 </script>
 <template>
-	<!-- shadow-xl shadow-black -->
 	<div
 		v-if="type === 'pc'"
 		class="hidden xl:flex flex-col w-full h-full col-start-7 col-end-11 row-start-3 row-end-[12]"
 	>
-		<div
-			class="w-full h-full bg-cover bg-no-repeat bg-center bg-fixed -z-10 car__bg"
-		></div>
+		<div class="swiper__shadow w-full h-full">
+			<div class="relative w-full h-full clip -z-10">
+				<div class="fixed inset-0 overflow-hidden">
+					<ul
+						class="w-full h-full flex flex-row swiper transition-transform duration-[400ms]"
+					>
+						<li
+							v-for="car in cars"
+							:key="car.id_car"
+							class="relative w-screen h-full flex-shrink-0"
+						>
+							<CarImage
+								:car="car"
+								res="highres"
+								class="absolute inset-0 w-full h-full object-cover object-center"
+							/>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 		<div class="flex justify-between mt-4">
 			<button
 				class="bg-zinc-800/75 hover:bg-zinc-700 fill-white rounded-full transition-colors"
+				@click="$emit('previous')"
 			>
 				<IconArrowLeft class="w-12 h-12 m-2" />
 			</button>
 			<button
 				class="bg-zinc-800/75 hover:bg-zinc-700 fill-white rounded-full transition-colors"
+				@click="$emit('next')"
 			>
 				<IconArrowRight class="w-12 h-12 m-2" />
 			</button>
@@ -40,11 +66,13 @@ export default {
 	>
 		<button
 			class="bg-zinc-800/75 hover:bg-zinc-700 fill-white rounded-full transition-colors"
+			@click="$emit('previous')"
 		>
 			<IconArrowLeft class="w-12 h-12 m-2" />
 		</button>
 		<button
 			class="bg-zinc-800/75 hover:bg-zinc-700 fill-white rounded-full transition-colors"
+			@click="$emit('next')"
 		>
 			<IconArrowRight class="w-12 h-12 m-2" />
 		</button>
@@ -52,8 +80,15 @@ export default {
 </template>
 
 <style scoped>
-.car__bg {
-	background-image: url('../assets/r8_highres.jpg');
+.clip {
+	clip-path: inset(0);
+}
+
+.swiper {
+	--index: 0;
+	transform: translate3d(calc(-100% * var(--index)), 0, 0);
+}
+.swiper__shadow {
 	box-shadow: #000000 0px 0px 70px -12px;
 }
 </style>
