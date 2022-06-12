@@ -40,7 +40,7 @@ export default {
 			const q = query(
 				collection(db, 'rents'),
 				where('id_user', '==', store.user.uid),
-				orderBy('created_at'),
+				orderBy('created_at', 'desc'),
 			);
 
 			const querySnapshot = await getDocs(q);
@@ -48,7 +48,6 @@ export default {
 				let id = doc.id;
 				this.rents.push({ id, ...doc.data() });
 			});
-
 			this.isLoading = false;
 		},
 		getCurrentDate() {
