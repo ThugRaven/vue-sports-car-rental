@@ -21,10 +21,17 @@ export default {
 		RouterView,
 	},
 	data() {
-		return {};
+		return { store };
+	},
+	watch: {
+		'store.user'() {
+			if (!store.user) {
+				return this.$router.push('/login');
+			}
+		},
 	},
 	created() {
-		if (!store.user) {
+		if (!store.user || (store.user && store.user.role !== 'admin')) {
 			return this.$router.push('/login');
 		}
 	},

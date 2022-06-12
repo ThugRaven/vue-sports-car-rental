@@ -35,7 +35,6 @@ export default {
 		}
 		this.getUserRents();
 	},
-
 	methods: {
 		async getUserRents() {
 			const q = query(
@@ -98,7 +97,7 @@ export default {
 						<tr v-for="rent in rents" :key="rent.id">
 							<td>
 								<RouterLink
-									:to="`/rent/${rent.id_car}`"
+									:to="`/cars/${rent.id_car}`"
 									class="hover:text-red-500 transition-colors"
 									>{{ rent.id_car }}</RouterLink
 								>

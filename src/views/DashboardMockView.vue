@@ -11,7 +11,7 @@ export default {
 		};
 	},
 	created() {
-		if (!store.user) {
+		if (!store.user || (store.user && store.user.role !== 'admin')) {
 			return this.$router.push('/login');
 		}
 	},

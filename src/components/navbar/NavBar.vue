@@ -28,7 +28,6 @@ export default {
 			<ul class="flex flex-row">
 				<NavItem to="/">Strona główna</NavItem>
 				<NavItem to="/cars">Samochody</NavItem>
-				<NavItem to="/contact">Kontakt</NavItem>
 				<NavItem
 					v-if="store.user && store.user.role === 'admin'"
 					to="/dashboard"
