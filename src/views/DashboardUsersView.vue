@@ -55,7 +55,7 @@ export default {
 </script>
 
 <template>
-	<div class="flex flex-col items-center justify-center w-full h-full">
+	<div class="flex flex-col items-center w-full h-full">
 		<h2 class="text-2xl font-bold text-center">
 			Dashboard - Użytkownicy - {{ users.length }}
 		</h2>

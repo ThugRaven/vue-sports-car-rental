@@ -35,7 +35,7 @@ export default {
 				>
 			</div>
 		</div>
-		<ul class="flex gap-16">
+		<ul class="flex flex-wrap items-center justify-center gap-16">
 			<CarMainStatsItem parameter="Silnik" value="V10"
 				><IconEngine
 			/></CarMainStatsItem>

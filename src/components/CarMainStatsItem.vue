@@ -21,7 +21,7 @@ export default {
 };
 </script>
 <template>
-	<li class="flex flex-col">
+	<li class="flex flex-col items-center sm:items-start">
 		<div
 			class="icon fill-zinc-400 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center mb-2"
 			:title="title ? title : parameter"
