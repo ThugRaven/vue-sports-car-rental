@@ -52,7 +52,6 @@ export default {
 
 			if (docSnap.exists()) {
 				this.car = docSnap.data();
-				console.log(this.car);
 			} else {
 				this.$router.push('/cars');
 			}
