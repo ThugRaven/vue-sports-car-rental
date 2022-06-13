@@ -105,7 +105,7 @@ export default {
 				class="absolute inset-0 bg-black -z-20 car__bg xl:after:hidden overflow-hidden"
 			>
 				<ul
-					class="w-full h-full flex flex-row swiper transition-transform duration-[400ms]"
+					class="w-full h-full flex flex-row swiper transition-transform duration-[400ms] xl:opacity-40 xl:blur-[1.25px] xl:grayscale-[60%] pointer-events-none"
 				>
 					<li
 						v-for="car in cars"
@@ -115,7 +115,7 @@ export default {
 						<CarImage
 							:car="car"
 							res="highres"
-							class="absolute inset-0 w-full h-full object-cover object-center xl:opacity-40 xl:blur-[1.25px] xl:grayscale-[60%] pointer-events-none"
+							class="absolute inset-0 w-full h-full object-cover object-center"
 						/>
 					</li>
 				</ul>
