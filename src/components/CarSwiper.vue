@@ -24,7 +24,9 @@ export default {
 		v-if="type === 'pc'"
 		class="hidden xl:flex flex-col w-full h-full col-start-7 col-end-11 row-start-3 row-end-[12]"
 	>
-		<div class="swiper__shadow w-full h-full">
+		<div
+			class="swiper__shadow swiper__progress relative w-full h-full after:absolute after:left-0 after:right-0 after:bottom-0 after:w-full after:h-1 after:bg-red-500 after:scale-0 after:origin-left after:transition-transform after:duration-[400ms]"
+		>
 			<div class="relative w-full h-full clip -z-10">
 				<div class="fixed inset-0 overflow-hidden">
 					<ul
@@ -90,5 +92,15 @@ export default {
 }
 .swiper__shadow {
 	box-shadow: #000000 0px 0px 70px -12px;
+}
+
+.swiper__progress {
+	--index: 0;
+	--length: 1;
+}
+
+.swiper__progress::after {
+	box-shadow: hsla(0, 84%, 60%, 0.2) 0em 0em 2em 1em;
+	transform: scaleX(calc(calc(100% / var(--length)) * var(--index)));
 }
 </style>

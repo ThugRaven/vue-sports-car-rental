@@ -84,9 +84,12 @@ export default {
 		},
 		setIndex() {
 			let swipers = document.querySelectorAll('.swiper');
+			let progress = document.querySelector('.swiper__progress');
 			swipers.forEach((swiper) => {
 				swiper.style.setProperty('--index', this.index);
 			});
+			progress.style.setProperty('--index', this.index);
+			progress.style.setProperty('--length', this.cars.length - 1);
 		},
 	},
 };
