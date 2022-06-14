@@ -40,7 +40,7 @@ export default {
 </script>
 
 <template>
-	<aside class="col-span-1 row-span-full bg-zinc-800">
+	<aside class="col-span-1 row-span-full bg-zinc-800 hidden sm:block">
 		<ul class="flex flex-col h-full">
 			<SideBarLogo href="/" class="py-3" />
 			<div class="mb-auto">
