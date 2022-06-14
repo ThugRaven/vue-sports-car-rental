@@ -36,10 +36,6 @@ export default {
 	<header
 		class="col-start-1 sm:col-start-3 col-end-13 row-span-1 flex items-center justify-end md:justify-between ml-0"
 	>
-		<IconMenu
-			class="block md:hidden shrink-0 w-12 h-12 mx-8 fill-white"
-			@click="isNavDrawerVisible = true"
-		/>
 		<nav class="hidden md:block">
 			<ul class="flex flex-row first:-ml-8">
 				<NavItem to="/" class="p-8">Strona główna</NavItem>
@@ -72,6 +68,12 @@ export default {
 				</button>
 			</RouterLink>
 		</div>
+		<button
+			class="block md:hidden mx-4 p-4 shrink-0"
+			@click="isNavDrawerVisible = true"
+		>
+			<IconMenu class="w-12 h-12 fill-white" />
+		</button>
 		<Teleport to="body">
 			<Transition name="fade">
 				<div
