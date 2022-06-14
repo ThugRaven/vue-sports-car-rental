@@ -29,7 +29,7 @@ export default {
 			this.isLoading = true;
 
 			let rents = [];
-			let q = query(collection(db, 'rents'), orderBy('created_at'));
+			let q = query(collection(db, 'rents'), orderBy('created_at', 'desc'));
 
 			const querySnapshot = await getDocs(q);
 			querySnapshot.forEach((doc) => {
