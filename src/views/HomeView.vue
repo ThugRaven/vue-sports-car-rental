@@ -98,7 +98,7 @@ export default {
 <template>
 	<main
 		v-if="cars.length > 0"
-		class="col-start-2 lg:col-start-3 col-end-13 xl:col-end-9 row-start-3 lg:row-start-3 row-end-[12] flex flex-col justify-center items-center sm:items-start lg:pl-0 p-8 lg:p-4 text-white"
+		class="col-start-1 sm:col-start-2 lg:col-start-3 col-end-13 xl:col-end-9 row-start-3 lg:row-start-3 row-end-[12] flex flex-col justify-center items-center sm:items-start lg:pl-0 p-8 lg:p-4 text-white"
 	>
 		<Teleport to="body">
 			<div
@@ -125,18 +125,20 @@ export default {
 			<span class="text-3xl lg:text-5xl ml-4 lg:leading-tight text-center"
 				>Wynajmij emocje</span
 			>
-			<div class="flex flex-wrap gap-4 justify-center sm:justify-start z-[1]">
+			<div class="flex flex-wrap gap-x-4 justify-center sm:justify-start z-[1]">
 				<span
-					class="text-7xl sm:text-9xl lg:text-[10.5rem] lg:leading-none font-bold"
+					class="text-7xl sm:text-8xl md:text-9xl lg:text-[10.5rem] lg:leading-none font-bold"
 					>{{ getCar.brand }}</span
 				>
 				<span
-					class="text-7xl sm:text-9xl lg:text-[10.5rem] lg:leading-none text-center sm:text-left font-display stroked"
+					class="text-7xl sm:text-8xl md:text-9xl lg:text-[10.5rem] lg:leading-none text-center sm:text-left font-display stroked"
 					>{{ getCar.model }}</span
 				>
 			</div>
 		</div>
-		<ul class="flex flex-wrap items-center justify-center gap-16">
+		<ul
+			class="flex flex-wrap items-center justify-center my-2 sm:my-4 gap-8 sm:gap-16"
+		>
 			<CarMainStatsItem
 				v-if="getCar.eng_info && getCar.eng_info.length < 5"
 				parameter="Silnik"
@@ -161,7 +163,7 @@ export default {
 				><IconSpeed
 			/></CarMainStatsItem>
 		</ul>
-		<span class="text-zinc-400 font-medium my-6"
+		<span class="text-zinc-400 font-medium text-center my-2 sm:my-6"
 			>już od
 			<span class="text-red-500 font-bold">{{ getCar.price_deposit }} zł</span>
 			za dobę!</span

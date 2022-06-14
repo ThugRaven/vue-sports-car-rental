@@ -24,7 +24,7 @@ export default {
 
 <template>
 	<main
-		class="col-start-2 lg:col-start-3 col-end-13 row-start-2 row-end-[13] flex flex-col items-center justify-center overflow-y-auto lg:pl-0 p-4 text-white bg-zinc-700"
+		class="col-start-1 sm:col-start-2 lg:col-start-3 col-end-13 row-start-2 row-end-[13] flex flex-col items-center justify-center overflow-y-auto lg:pl-0 p-4 text-white bg-zinc-700"
 	>
 		<div class="flex flex-col w-full max-w-md">
 			<h1 class="my-6 text-4xl font-semibold text-center md:text-left">

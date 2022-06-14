@@ -82,7 +82,7 @@ export default {
 <template>
 	<main
 		v-if="car"
-		class="col-start-2 lg:col-start-3 col-end-13 row-start-2 row-end-[13] flex flex-col overflow-y-auto lg:pl-0 p-4 text-white bg-zinc-700"
+		class="col-start-1 sm:col-start-2 lg:col-start-3 col-end-13 row-start-2 row-end-[13] flex flex-col overflow-y-auto lg:pl-0 p-4 text-white bg-zinc-700"
 	>
 		<div
 			class="flex flex-col items-center justify-center p-12 gap-6 relative z-0 text-center"
@@ -100,7 +100,7 @@ export default {
 			/>
 		</div>
 		<div>
-			<ul class="grid grid-cols-3 md:grid-cols-5 gap-4 my-8">
+			<ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 my-8">
 				<CarStatItem
 					parameter="Silnik"
 					:value="`${
@@ -219,7 +219,7 @@ export default {
 	</main>
 	<div
 		v-else
-		class="col-start-2 lg:col-start-3 col-end-13 row-start-2 row-end-[13] flex flex-col justify-center items-center bg-zinc-700"
+		class="col-start-1 sm:col-start-2 lg:col-start-3 col-end-13 row-start-2 row-end-[13] flex flex-col justify-center items-center bg-zinc-700"
 	>
 		<svg
 			class="animate-spin h-24 w-24 text-white"

@@ -146,7 +146,7 @@ export default {
 			</div>
 			<div
 				v-else-if="isLoading"
-				class="col-start-2 lg:col-start-3 col-end-13 row-start-2 row-end-[13] flex flex-col justify-center items-center p-8 bg-zinc-700"
+				class="col-start-1 sm:col-start-2 lg:col-start-3 col-end-13 row-start-2 row-end-[13] flex flex-col justify-center items-center p-8 bg-zinc-700"
 			>
 				<svg
 					class="animate-spin h-24 w-24 text-white"

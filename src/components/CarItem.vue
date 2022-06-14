@@ -37,7 +37,7 @@ export default {
 			:car="car"
 			class="lg:w-80 h-80 xl:w-96 xl:h-96 lg:aspect-square object-cover"
 		/>
-		<div class="flex flex-col justify-evenly p-4 pl-8 w-full gap-4">
+		<div class="flex flex-col justify-evenly p-4 lg:pl-8 w-full gap-4">
 			<RouterLink :to="`/cars/${car.id}`" class="text-center lg:text-left">
 				<span
 					class="text-2xl lg:text-3xl xl:text-4xl font-semibold tracking-widest hover:text-red-500 transition-colors"

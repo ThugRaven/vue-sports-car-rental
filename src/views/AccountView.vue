@@ -68,13 +68,13 @@ export default {
 <template>
 	<main
 		v-if="store.user"
-		class="col-start-2 lg:col-start-3 col-end-13 row-start-2 row-end-[13] flex flex-col items-center justify-center overflow-y-auto lg:pl-0 p-4 text-white bg-zinc-700"
+		class="col-start-1 sm:col-start-2 lg:col-start-3 col-end-13 row-start-2 row-end-[13] flex flex-col items-center justify-center overflow-y-auto lg:pl-0 p-4 text-white bg-zinc-700"
 	>
 		<IconUserAvatar class="w-32 h-32 fill-white" />
-		<h2 class="text-lg sm:text-2xl font-bold text-center">
+		<h2 class="text-base sm:text-2xl font-bold text-center">
 			{{ store.user.email }}
 		</h2>
-		<h2 class="mt-4 text-3xl font-bold text-center">
+		<h2 class="mt-4 text-xl sm:text-3xl font-bold text-center">
 			Moje wynajmy - {{ rents.length }}
 		</h2>
 		<div class="w-full">
