@@ -102,7 +102,7 @@ export default {
 	>
 		<Teleport to="body">
 			<div
-				class="absolute inset-0 bg-black -z-20 car__bg xl:after:hidden overflow-hidden"
+				class="fixed inset-0 bg-black -z-20 car__bg xl:after:hidden overflow-hidden"
 			>
 				<ul
 					class="w-full h-full flex flex-row swiper transition-transform duration-[400ms] xl:opacity-40 xl:blur-[1.25px] xl:grayscale-[60%] pointer-events-none"
@@ -122,16 +122,17 @@ export default {
 			</div>
 		</Teleport>
 		<div class="flex flex-col items-center sm:items-start">
-			<span class="text-3xl lg:text-5xl ml-4 lg:leading-tight text-center"
+			<span
+				class="text-2xl lg:text-5xl ml-0 sm:ml-4 lg:leading-tight text-center"
 				>Wynajmij emocje</span
 			>
 			<div class="flex flex-wrap gap-x-4 justify-center sm:justify-start z-[1]">
 				<span
-					class="text-7xl sm:text-8xl md:text-9xl lg:text-[10.5rem] lg:leading-none font-bold"
+					class="text-6xl sm:text-8xl md:text-9xl lg:text-[10.5rem] lg:leading-none font-bold"
 					>{{ getCar.brand }}</span
 				>
 				<span
-					class="text-7xl sm:text-8xl md:text-9xl lg:text-[10.5rem] lg:leading-none text-center sm:text-left font-display stroked"
+					class="text-6xl sm:text-8xl md:text-9xl lg:text-[10.5rem] lg:leading-none text-center sm:text-left font-display stroked"
 					>{{ getCar.model }}</span
 				>
 			</div>
@@ -163,7 +164,8 @@ export default {
 				><IconSpeed
 			/></CarMainStatsItem>
 		</ul>
-		<span class="text-zinc-400 font-medium text-center my-2 sm:my-6"
+		<span
+			class="text-zinc-400 font-medium text-xs sm:text-base text-center my-2 sm:my-6"
 			>już od
 			<span class="text-red-500 font-bold">{{ getCar.price_deposit }} zł</span>
 			za dobę!</span
@@ -171,7 +173,7 @@ export default {
 		<div class="flex flex-col">
 			<RouterLink :to="`/cars/${getCar.id_car}`">
 				<button
-					class="bg-zinc-800/75 hover:bg-zinc-700/75 py-4 px-12 rounded-full font-semibold tracking-wide transition-colors"
+					class="bg-zinc-800/75 hover:bg-zinc-700/75 py-3 sm:py-4 px-8 sm:px-12 text-xs sm:text-base rounded-full font-semibold tracking-wide transition-colors"
 				>
 					Zarezerwuj
 				</button>

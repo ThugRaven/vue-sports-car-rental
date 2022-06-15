@@ -72,7 +72,7 @@ export default {
 			class="block md:hidden mx-4 p-4 shrink-0"
 			@click="isNavDrawerVisible = true"
 		>
-			<IconMenu class="w-12 h-12 fill-white" />
+			<IconMenu class="w-8 h-8 sm:w-12 sm:h-12 fill-white" />
 		</button>
 		<Teleport to="body">
 			<Transition name="fade">

@@ -92,12 +92,12 @@ export default {
 						<input
 							type="submit"
 							value="Szukaj"
-							class="px-7 py-3 text-sm uppercase font-bold text-white bg-red-500 border-2 border-red-500 hover:bg-zinc-900 hover:border-zinc-900 transition-colors cursor-pointer"
+							class="w-full px-7 py-3 text-sm uppercase font-bold text-white bg-red-500 border-2 border-red-500 hover:bg-zinc-900 hover:border-zinc-900 transition-colors cursor-pointer"
 						/>
 						<input
 							type="reset"
 							value="Wyczyść"
-							class="px-7 py-3 text-sm uppercase font-bold text-red-500 bg-transparent border-2 border-red-500 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 transition-colors cursor-pointer"
+							class="w-full px-7 py-3 text-sm uppercase font-bold text-red-500 bg-transparent border-2 border-red-500 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 transition-colors cursor-pointer"
 							@click="clear"
 						/>
 					</div>

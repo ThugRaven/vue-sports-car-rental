@@ -52,13 +52,13 @@ export default {
 				class="bg-zinc-800/75 hover:bg-zinc-700 fill-white rounded-full transition-colors"
 				@click="$emit('previous')"
 			>
-				<IconArrowLeft class="w-12 h-12 m-2" />
+				<IconArrowLeft class="w-8 h-8 sm:w-12 sm:h-12 m-2" />
 			</button>
 			<button
 				class="bg-zinc-800/75 hover:bg-zinc-700 fill-white rounded-full transition-colors"
 				@click="$emit('next')"
 			>
-				<IconArrowRight class="w-12 h-12 m-2" />
+				<IconArrowRight class="w-8 h-8 sm:w-12 sm:h-12 m-2" />
 			</button>
 		</div>
 	</div>
@@ -70,13 +70,13 @@ export default {
 			class="bg-zinc-800/75 hover:bg-zinc-700 fill-white rounded-full transition-colors"
 			@click="$emit('previous')"
 		>
-			<IconArrowLeft class="w-12 h-12 m-2" />
+			<IconArrowLeft class="w-8 h-8 sm:w-12 sm:h-12 m-2" />
 		</button>
 		<button
 			class="bg-zinc-800/75 hover:bg-zinc-700 fill-white rounded-full transition-colors"
 			@click="$emit('next')"
 		>
-			<IconArrowRight class="w-12 h-12 m-2" />
+			<IconArrowRight class="w-8 h-8 sm:w-12 sm:h-12 m-2" />
 		</button>
 	</div>
 </template>

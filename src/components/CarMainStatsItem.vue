@@ -23,7 +23,7 @@ export default {
 <template>
 	<li class="flex flex-col items-center sm:items-start">
 		<div
-			class="icon fill-zinc-400 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center mb-2"
+			class="icon fill-zinc-400 w-6 h-6 sm:w-10 sm:h-10 flex items-center justify-center mb-2"
 			:title="title ? title : parameter"
 		>
 			<slot></slot>
@@ -31,7 +31,7 @@ export default {
 		<span class="text-zinc-400 font-medium text-sm sm:text-lg">{{
 			parameter
 		}}</span>
-		<span class="text-white font-bold text-3xl sm:text-5xl">{{ value }}</span>
+		<span class="text-white font-bold text-2xl sm:text-5xl">{{ value }}</span>
 	</li>
 </template>
 
