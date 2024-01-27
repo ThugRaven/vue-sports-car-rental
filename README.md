@@ -1,35 +1,18 @@
-# vue-sports-car-rental
+# Sports Car Rental
 
-This template should help get you started developing with Vue 3 in Vite.
+Sports car rental website made using Vue.js and Firebase. [PHP version (more developed)](https://github.com/ThugRaven/php-sports-car-rental)
 
-## Recommended IDE Setup
+![Main Page](gif.gif)
+![Car list](img_01.png)
+![Car rent page](img_02.png)
+![Admin cars dashboard](img_03.png)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Inspiration
 
-## Customize configuration
+Main page design inspired by [MPC](https://dribbble.com/shots/9840938-UX-UI-Car-rental-website) 
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+# Demo
 
-## Project Setup
+Live demo: https://thugraven.github.io/vue-sports-car-rental/
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Search **is** case sensitive
