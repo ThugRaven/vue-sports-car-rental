@@ -1,6 +1,6 @@
 # Sports Car Rental
 
-Sports car rental website made using Vue.js and Firebase. [PHP version (more developed)](https://github.com/ThugRaven/php-sports-car-rental)
+Sports car rental website made using Vue.js, Tailwind CSS and Firebase. [PHP version (more developed)](https://github.com/ThugRaven/php-sports-car-rental)
 
 ![Main Page](gif.gif)
 ![Car list](img_01.png)
