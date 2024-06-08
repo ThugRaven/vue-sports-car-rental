@@ -14,6 +14,7 @@ Live demo: https://thugraven.github.io/vue-sports-car-rental/
 
 Search **is** case sensitive
 
+![Main page](img_06.png)
 ![Car list](img_01.png)
 ![Car rent page](img_02.png)
 ![Admin cars dashboard](img_03.png)
